@@ -1,0 +1,13 @@
+{
+  "name": "gitamago",
+  "version": "1.0.0",
+  "manifest_version": 3,
+  "description": "description",
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "permissions": [
+    "activeTab"
+  ],
+  "host_permissions": ["*://*/*"]
+}
