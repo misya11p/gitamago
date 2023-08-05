@@ -1,7 +1,9 @@
 function saveOptions() {
   let githubUserId = document.querySelector("#github-user-id").value;
+  let skinColor = document.querySelector("#skin-color").value;
   chrome.storage.sync.set({
-    githubUserId: githubUserId
+    githubUserId: githubUserId,
+    skinColor: skinColor
   });
 }
 

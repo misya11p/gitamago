@@ -1,9 +1,19 @@
-async function loadOptions() {
+async function loadGithubUserId() {
   return new Promise((resolve) => {
     chrome.storage.sync.get({
       githubUserId: ""
     }, function(items) {
       resolve(items.githubUserId);
+    });
+  });
+}
+
+async function loadSkinColor() {
+  return new Promise((resolve) => {
+    chrome.storage.sync.get({
+      skinColor: ""
+    }, function(items) {
+      resolve(items.skinColor);
     });
   });
 }
@@ -20,7 +30,8 @@ function getCondition(totalCommitCount) {
 
 async function main() {
   console.log("main");
-  let githubUserId = await loadOptions();
+  let githubUserId = await loadGithubUserId();
+  console.log(githubUserId);
   document.getElementById("github-user-id").innerHTML = githubUserId;
   console.log(githubUserId);
 
@@ -36,10 +47,12 @@ async function main() {
   let totalCommitCount = 50;
 
   var field = document.getElementById("animation");
+  let skinColor = await loadSkinColor();
+  console.log(skinColor);
   const SKIN_SIZE = 50;
   const FPS = 6;
   let condition = getCondition(totalCommitCount);
-  let user = new User("yellow", condition, field, SKIN_SIZE, FPS);
+  let user = new User(skinColor, condition, field, SKIN_SIZE, FPS);
   setInterval(() => {
     user.update();
   }, 1000 / FPS);
