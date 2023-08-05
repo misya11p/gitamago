@@ -74,8 +74,10 @@ class User {
   }
 
   walk() {
-    if (this.x + this.speedX > this.fieldWidth || this.x + this.speedX < 0) {
-      this.speedX *= -1;
+    if (this.x + this.speedX > this.fieldWidth) {
+      this.speedX = -Math.abs(this.speedX);
+    } else if (this.x + this.speedX < 0) {
+      this.speedX = Math.abs(this.speedX);
     }
     this.x += this.speedX;
     this.setPositon();
