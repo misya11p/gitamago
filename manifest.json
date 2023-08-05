@@ -4,9 +4,9 @@
   "manifest_version": 3,
   "description": "description",
   "action": {
-    "default_popup": "popup.html"
+    "default_popup": "src/popup.html"
   },
-  "options_page": "options.html",
+  "options_page": "src/options.html",
   "permissions": [
     "activeTab",
     "storage"
