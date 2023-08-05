@@ -34,7 +34,7 @@ async function main() {
   //     .then(totalCommitCount => console.log('Total Commit Count:', totalCommitCount))
   //     .catch(error => console.error('Error:', error));
   let totalCommitCount = 50;
-  
+
   var field = document.getElementById("animation");
   const SKIN_SIZE = 50;
   const FPS = 6;
