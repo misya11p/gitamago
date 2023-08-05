@@ -6,11 +6,13 @@ const FPS = 6;
 
 
 class User {
-  constructor(skin) {
+  constructor(skin, condition) {
+    this.condition = condition; // condition. 0: dead, 1: normal, 2: fever
+
     this.element = document.createElement('img');
     field.appendChild(this.element);
-    this.element.src = "skins/" + skin + ".gif";
-    this.state = "neutral"
+    this.element.src = "skins/" + skin + "/" + condition + ".gif";
+    this.state = "neutral" // move state. neutral, walk, jump
     this.element.style.position = "relative";
     this.element.style.width = SKIN_SIZE + "px";
     this.element.style.height = SKIN_SIZE + "px";
@@ -52,17 +54,20 @@ class User {
 
   setWalk() {
     this.state = "walk";
+    this.speedX = parseInt(Math.floor(Math.random() * 11)) - 5; // -5 ~ 5
+    this.speedX *= this.condition; // fit condition
     this.y = 0;
-    this.speedX = parseInt(Math.floor(Math.random() * 2)) * 20 - 10;
     let sec = Math.floor(Math.random() * 3) + 2;
     this.limit = FPS * sec;
   }
 
   setJump() {
     this.state = "jump";
-    this.speedX = parseInt(Math.floor(Math.random() * 2)) * 10;
     this.limit = FPS;
-    this.jumpPower = 100;
+    this.speedX = parseInt(Math.floor(Math.random() * 11)) - 5; // -5 ~ 5
+    this.speedX *= this.condition; // fit condition
+    this.jumpPower = parseInt(Math.floor(Math.random() * 21)) + 30; // 30 ~ 50
+    this.jumpPower *= this.condition; // fit condition
     this.jumpHeight = () => {
       let t = this.count / this.limit;
       return (-4 * t**2 + 4 * t) * this.jumpPower; 
@@ -109,7 +114,7 @@ class User {
   }
 }
 
-let user = new User("piyo");
+let user = new User("yellow", 2);
 setInterval(() => {
   user.update();
 }, 1000 / FPS);
