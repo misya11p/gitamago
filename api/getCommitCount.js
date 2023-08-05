@@ -1,5 +1,5 @@
-async function getPublicRepo(user_name) {
-    const url = `https://api.github.com/users/${user_name}/repos`;
+async function getPublicRepo(userName) {
+    const url = `https://api.github.com/users/${userName}/repos`;
     try {
         const response = await fetch(url);
         if (!response.ok) {
@@ -18,8 +18,8 @@ async function getPublicRepo(user_name) {
     }
 }
 
-async function getCommitCount(user_name, repo_name, since_time) {
-    const url = `https://api.github.com/repos/${user_name}/${repo_name}/commits?since=${since_time}`;
+async function getCommitCount(userName, repoName, sinceTime) {
+    const url = `https://api.github.com/repos/${userName}/${repoName}/commits?since=${sinceTime}`;
     try {
         const response = await fetch(url);
         if (!response.ok) {
@@ -35,11 +35,11 @@ async function getCommitCount(user_name, repo_name, since_time) {
     }
 }
 
-async function getTotalCommitCount(user_name, since_time) {
+async function getTotalCommitCount(userName, sinceTime) {
     try {
-        const publicRepo = await getPublicRepo(user_name);
+        const publicRepo = await getPublicRepo(userName);
         // プロミスの配列を作成
-        const promises = publicRepo.map(repo_name => getCommitCount(user_name, repo_name, since_time));
+        const promises = publicRepo.map(repoName => getCommitCount(userName, repoName, sinceTime));
         // すべてのプロミスを非同期に実行して結果を取得
         const commitCounts = await Promise.all(promises);
         // 各リポジトリのコミット数を合計する
