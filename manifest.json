@@ -2,7 +2,7 @@
   "name": "gitamago",
   "version": "1.0.0",
   "manifest_version": 3,
-  "description": "description",
+  "description": "Monitor recent your github activity in 'Piyo'.",
   "action": {
     "default_popup": "src/popup.html"
   },
