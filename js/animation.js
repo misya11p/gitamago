@@ -66,7 +66,7 @@ class User {
     this.jumpPower *= this.condition; // fit condition
     this.jumpHeight = () => {
       let t = this.count / this.limit;
-      return (-4 * t**2 + 4 * t) * this.jumpPower; 
+      return (-4 * t**2 + 4 * t) * this.jumpPower;
     }
   }
 
