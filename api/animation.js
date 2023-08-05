@@ -84,7 +84,7 @@ class User {
   }
 
   jump() {
-    if (this.x + this.speedX > this.fieldWidth) {
+    if (this.x + this.speedX > this.fieldWidth || this.x + this.speedX < 0) {
       this.speedX = 0;
     }
     this.x += this.speedX;
