@@ -1,5 +1,6 @@
 async function getPublicRepo(user_name) {
     const url = `https://api.github.com/users/${user_name}/repos`;
+    console.log(url);
     try {
         const response = await fetch(url);
         if (!response.ok) {
@@ -20,6 +21,7 @@ async function getPublicRepo(user_name) {
 
 async function getCommitCount(user_name, repo_name, since_time) {
     const url = `https://api.github.com/repos/${user_name}/${repo_name}/commits?since=${since_time}`;
+    console.log(url);
     try {
         const response = await fetch(url);
         if (!response.ok) {
@@ -55,6 +57,7 @@ async function getTotalCommitCount(user_name, since_time) {
 // usage
 // const user_name = 'Rintaro-Fukui';
 // const since_time = '2023-07-01T00:00:00+0900';
+// const since_time = '2023-07-29T08:24:01+0900';
 // getTotalCommitCount(user_name, since_time)
 //     .then(totalCommitCount => console.log('Total Commit Count:', totalCommitCount))
 //     .catch(error => console.error('Error:', error));

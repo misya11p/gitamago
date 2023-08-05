@@ -1,23 +1,19 @@
-var field = document.getElementById("animation");
-const SKIN_SIZE = 50;
-const FIELD_WIDTH = field.clientWidth - SKIN_SIZE;
-const FIELD_HEIGHT = field.clientHeight - SKIN_SIZE;
-const FPS = 6;
-
-
 class User {
-  constructor(skin, condition) {
+  constructor(skin, condition, field, skinSize, fps) {
     this.condition = condition; // condition. 0: dead, 1: normal, 2: fever
+    this.fieldWidth = field.clientWidth - skinSize;
+    this.fieldHeight = field.clientHeight - skinSize;
+    this.fps = fps;
 
     this.element = document.createElement('img');
     field.appendChild(this.element);
     this.element.src = "skins/" + skin + "/" + condition + ".gif";
     this.state = "neutral" // move state. neutral, walk, jump
     this.element.style.position = "relative";
-    this.element.style.width = SKIN_SIZE + "px";
-    this.element.style.height = SKIN_SIZE + "px";
+    this.element.style.width = skinSize + "px";
+    this.element.style.height = skinSize + "px";
 
-    this.x = parseInt(Math.floor(Math.random() * FIELD_WIDTH));
+    this.x = parseInt(Math.floor(Math.random() * this.fieldWidth));
     this.y = 0;
     this.setPositon();
     this.count = 0;
@@ -26,7 +22,7 @@ class User {
 
   setPositon() {
     this.element.style.left = this.x + "px";
-    this.element.style.top = (FIELD_HEIGHT - this.y) + "px";
+    this.element.style.top = (this.fieldHeight - this.y) + "px";
   }
 
   reset() {
@@ -49,7 +45,7 @@ class User {
     this.state = "neutral";
     this.y = 0;
     let sec = Math.floor(Math.random() * 3) + 2;
-    this.limit = FPS * sec;
+    this.limit = this.fps * sec;
   }
 
   setWalk() {
@@ -58,12 +54,12 @@ class User {
     this.speedX *= this.condition; // fit condition
     this.y = 0;
     let sec = Math.floor(Math.random() * 3) + 2;
-    this.limit = FPS * sec;
+    this.limit = this.fps * sec;
   }
 
   setJump() {
     this.state = "jump";
-    this.limit = FPS;
+    this.limit = this.fps;
     this.speedX = parseInt(Math.floor(Math.random() * 11)) - 5; // -5 ~ 5
     this.speedX *= this.condition; // fit condition
     this.jumpPower = parseInt(Math.floor(Math.random() * 21)) + 30; // 30 ~ 50
@@ -78,7 +74,7 @@ class User {
   }
 
   walk() {
-    if (this.x + this.speedX > FIELD_WIDTH || this.x + this.speedX < 0) {
+    if (this.x + this.speedX > this.fieldWidth || this.x + this.speedX < 0) {
       this.speedX *= -1;
     }
     this.x += this.speedX;
@@ -86,7 +82,7 @@ class User {
   }
 
   jump() {
-    if (this.x + this.speedX > FIELD_WIDTH) {
+    if (this.x + this.speedX > this.fieldWidth) {
       this.speedX = 0;
     }
     this.x += this.speedX;
@@ -113,8 +109,3 @@ class User {
     this.count++;
   }
 }
-
-let user = new User("yellow", 2);
-setInterval(() => {
-  user.update();
-}, 1000 / FPS);
