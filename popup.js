@@ -1,3 +1,5 @@
+const API_URL = "https://gsbmtic6zb.execute-api.ap-northeast-1.amazonaws.com/app";
+
 async function loadGithubUserId() {
   return new Promise((resolve) => {
     chrome.storage.sync.get({
@@ -11,11 +13,30 @@ async function loadGithubUserId() {
 async function loadSkinColor() {
   return new Promise((resolve) => {
     chrome.storage.sync.get({
-      skinColor: ""
+      skinColor: "yellow"
     }, function(items) {
       resolve(items.skinColor);
     });
   });
+}
+
+async function getCommitCount(githubUserId) {
+  try {
+    if (githubUserId === "") {
+      return null;
+    }
+    let url = `${API_URL}?username=${githubUserId}`;
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    const data = await response.json();
+    let commitCount = data.commitCount;
+    return commitCount;
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    return null;
+  }
 }
 
 function getCondition(totalCommitCount) {
@@ -29,37 +50,26 @@ function getCondition(totalCommitCount) {
 }
 
 async function main() {
-  console.log("main");
   let githubUserId = await loadGithubUserId();
-  console.log(githubUserId);
   document.getElementById("github-user-id").innerHTML = githubUserId;
-  console.log(githubUserId);
 
-  let date = new Date();
-  date.setDate(date.getDate() - 7);
-  let sinceTime = date.toISOString().slice(0, 19) + '+0900';
+  try {
+    let commitCount = await getCommitCount(githubUserId);
 
-  console.log(sinceTime);
-
-  // let totalCommitCount = await getTotalCommitCount(githubUserId, sinceTime)
-  //     .then(totalCommitCount => console.log('Total Commit Count:', totalCommitCount))
-  //     .catch(error => console.error('Error:', error));
-  let totalCommitCount = 50;
-
-  var field = document.getElementById("animation");
-  let skinColor = await loadSkinColor();
-  console.log(skinColor);
-  const SKIN_SIZE = 50;
-  const FPS = 6;
-  let condition = getCondition(totalCommitCount);
-  let user = new User(skinColor, condition, field, SKIN_SIZE, FPS);
-  setInterval(() => {
-    user.update();
-  }, 1000 / FPS);
-
+    var field = document.getElementById("animation");
+    let skinColor = await loadSkinColor();
+    const SKIN_SIZE = 50;
+    const FPS = 6;
+    let condition = getCondition(commitCount);
+    let user = new User(skinColor, condition, field, SKIN_SIZE, FPS);
+    setInterval(() => {
+      user.update();
+    }, 1000 / FPS);
+  
+  } catch (error) {
+    console.error('Error:', error);
+    return null;
+  }
 }
 
-console.log("popup.js");
 main();
-
-
