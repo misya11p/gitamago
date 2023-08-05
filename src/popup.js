@@ -51,11 +51,8 @@ function getCondition(totalCommitCount) {
 
 async function main() {
   let githubUserId = await loadGithubUserId();
-  document.getElementById("github-user-id").innerHTML = githubUserId;
-
   try {
     let commitCount = await getCommitCount(githubUserId);
-
     var field = document.getElementById("animation");
     let skinColor = await loadSkinColor();
     const SKIN_SIZE = 50;
