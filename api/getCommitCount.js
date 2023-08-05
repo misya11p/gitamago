@@ -55,6 +55,7 @@ async function getTotalCommitCount(userName, sinceTime) {
 // usage
 // const user_name = 'Rintaro-Fukui';
 // const since_time = '2023-07-01T00:00:00+0900';
+// const since_time = '2023-07-29T08:24:01+0900';
 // getTotalCommitCount(user_name, since_time)
 //     .then(totalCommitCount => console.log('Total Commit Count:', totalCommitCount))
 //     .catch(error => console.error('Error:', error));
