@@ -1,13 +1,48 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Option</title>
-  <script src="options.js"></script>
-</head>
-<body>
-  <p>GitHub User ID: <input type="text" id="github-user-id"></p>
-  <button id="save">Save</button>
-</body>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Option</title>
+    <script src="options.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css" />
+  </head>
+  <body>
+    <div class="hero is-warning">
+      <div class="hero-body">
+          <div class="container">
+              <h1 class="title">GiTamago</h1>
+              <h2 class="subtitle">created by 21歳</h2>
+            </div>
+        </div>
+    </div>
+    <section class="section">
+      <div class="container">
+        <div class="title">Enter your Github-User-ID and your favorite color. to use the extension.</div>
+        <div class="field">
+          <div class="control">
+            <label class="label">GitHub User ID</label>
+            <input type="text" id="github-user-id" class="input is-warning">
+          </div>
+        </div>
+        <div class="field">
+          <div class="control">
+            <label class="label">Color</label>
+            <div class="select">
+              <select>
+                <option>yellow</option>
+                <option>pink</option>
+                <option>green</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <div class="control">
+            <button id="save" class="button is-warning">Save</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
 </html>
