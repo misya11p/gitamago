@@ -1,4 +1,7 @@
 const API_URL = "https://gsbmtic6zb.execute-api.ap-northeast-1.amazonaws.com/app";
+const SKIN_SIZE = 50;
+const FPS = 6;
+
 
 async function loadGithubUserId() {
   return new Promise((resolve) => {
@@ -39,10 +42,10 @@ async function getCommitCount(githubUserId) {
   }
 }
 
-function getCondition(totalCommitCount) {
-  if (totalCommitCount < 5) {
+function getCondition(commitCount) {
+  if (commitCount < 5) {
     return 0;
-  } else if (totalCommitCount < 20) {
+  } else if (commitCount < 20) {
     return 1;
   } else {
     return 2;
@@ -55,8 +58,6 @@ async function main() {
     let commitCount = await getCommitCount(githubUserId);
     var field = document.getElementById("animation");
     let skinColor = await loadSkinColor();
-    const SKIN_SIZE = 50;
-    const FPS = 6;
     let condition = getCondition(commitCount);
     let user = new User(skinColor, condition, field, SKIN_SIZE, FPS);
     setInterval(() => {
