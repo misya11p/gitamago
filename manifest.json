@@ -9,9 +9,9 @@
   "options_page": "src/options.html",
   "permissions": ["storage"],
   "icons": {
-    "16": "icons/icon16.png",
-    "48": "icons/icon48.png",
-    "128": "icons/icon128.png"
+    "16": "imgs/icons/icon16.png",
+    "48": "imgs/icons/icon48.png",
+    "128": "imgs/icons/icon128.png"
   },
   "host_permissions": ["https://gsbmtic6zb.execute-api.ap-northeast-1.amazonaws.com/app"]
 }
