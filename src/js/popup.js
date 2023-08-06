@@ -37,7 +37,7 @@ async function getCommitCount(githubUserId) {
     let commitCount = data.commitCount;
     return commitCount;
   } catch (error) {
-    console.error('Error fetching data:', error);
+    console.log('Error fetching data:', error);
     return null;
   }
 }
