@@ -63,7 +63,7 @@ async function main() {
     setInterval(() => {
       user.update();
     }, 1000 / FPS);
-  
+
   } catch (error) {
     console.error('Error:', error);
     return null;
