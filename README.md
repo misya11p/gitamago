@@ -33,4 +33,5 @@ This chrome extension displays 'Piyo' that matches the user's github commit stat
 
 ## Usage
 
-Install from Chrome Web Store: https://chrome.google.com/webstore/detail/gitamago/blgokogbebhdjeegabipeikdimmfidje
+- Install from [Chrome Web Store](https://chrome.google.com/webstore/detail/gitamago/blgokogbebhdjeegabipeikdimmfidje)
+- Set your github username in options page
