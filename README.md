@@ -33,10 +33,4 @@ This chrome extension displays 'Piyo' that matches the user's github commit stat
 
 ## Usage
 
-- Clone this repository.
-
-```shell
-git clone https://github.com/misya11p/gitamago.git
-```
-
-- Turn on chrome's developer mode and add extensions.
+Install from Chrome Web Store: https://chrome.google.com/webstore/detail/gitamago/blgokogbebhdjeegabipeikdimmfidje
