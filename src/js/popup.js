@@ -45,7 +45,7 @@ async function getCommitCount(githubUserId) {
 function getCondition(commitCount) {
   if (commitCount < 5) {
     return 0;
-  } else if (commitCount < 20) {
+  } else if (commitCount < 15) {
     return 1;
   } else {
     return 2;
@@ -63,7 +63,6 @@ async function main() {
     setInterval(() => {
       user.update();
     }, 1000 / FPS);
-
   } catch (error) {
     console.error('Error:', error);
     return null;
