@@ -47,8 +47,10 @@ function getCondition(commitCount) {
     return 0;
   } else if (commitCount < 15) {
     return 1;
-  } else {
+  } else if (commitCount < 25) {
     return 2;
+  } else {
+    return 3;
   }
 }
 

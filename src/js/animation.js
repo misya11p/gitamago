@@ -1,3 +1,5 @@
+const MAX_CONDITIONS = 3;
+
 class User {
   constructor(skin, condition, field, skinSize, fps) {
     this.condition = condition; // condition. 0: dead, 1: normal, 2: fever
@@ -50,8 +52,8 @@ class User {
 
   setWalk() {
     this.state = "walk";
-    this.speedX = parseInt(Math.floor(Math.random() * 11)) - 5; // -5 ~ 5
-    this.speedX *= this.condition; // fit condition
+    let power = Math.floor(Math.random() * 21) - 10; // -10 ~ 10
+    this.speedX = parseInt(power * this.condition / MAX_CONDITIONS); // fit condition
     this.y = 0;
     let sec = Math.floor(Math.random() * 3) + 2;
     this.limit = this.fps * sec;
@@ -60,10 +62,10 @@ class User {
   setJump() {
     this.state = "jump";
     this.limit = this.fps;
-    this.speedX = parseInt(Math.floor(Math.random() * 11)) - 5; // -5 ~ 5
-    this.speedX *= this.condition; // fit condition
-    this.jumpPower = parseInt(Math.floor(Math.random() * 21)) + 30; // 30 ~ 50
-    this.jumpPower *= this.condition; // fit condition
+    let powerX = Math.floor(Math.random() * 21) - 10; // -10 ~ 10
+    this.speedX = parseInt(powerX * this.condition / MAX_CONDITIONS); // fit condition
+    let powerJump = Math.floor(Math.random() * 41) + 60;
+    this.jumpPower = parseInt(powerJump * this.condition / MAX_CONDITIONS); // fit condition
     this.jumpHeight = () => {
       let t = this.count / this.limit;
       return (-4 * t**2 + 4 * t) * this.jumpPower;
