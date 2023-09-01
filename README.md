@@ -13,6 +13,7 @@ This chrome extension displays 'Piyo' that matches the user's github commit stat
     <img src="src/skins/yellow/0.gif" width="128">
     <img src="src/skins/yellow/1.gif" width="128">
     <img src="src/skins/yellow/2.gif" width="128">
+    <img src="src/skins/yellow/3.gif" width="128">
 </div>
 
 ### pink
@@ -21,6 +22,7 @@ This chrome extension displays 'Piyo' that matches the user's github commit stat
     <img src="src/skins/pink/0.gif" width="128">
     <img src="src/skins/pink/1.gif" width="128">
     <img src="src/skins/pink/2.gif" width="128">
+    <img src="src/skins/pink/3.gif" width="128">
 </div>
 
 ### green
@@ -29,6 +31,7 @@ This chrome extension displays 'Piyo' that matches the user's github commit stat
     <img src="src/skins/green/0.gif" width="128">
     <img src="src/skins/green/1.gif" width="128">
     <img src="src/skins/green/2.gif" width="128">
+    <img src="src/skins/green/3.gif" width="128">
 </div>
 
 ## Usage
